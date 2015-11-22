@@ -1,0 +1,63 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: #333;
+}
+
+.sign-in-form {
+    max-width: 800px;
+    min-width: 320px;
+    margin: 50px auto 0;
+}
+
+.select-el,
+.input-el {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.select-el select,
+.input-el input {
+    display: block;
+    width: 100%;
+    border: 1px solid lightgray;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.input-el__first-name,
+.input-el__last-name {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.input-el__add-1,
+.input-el__add-1 {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.select-el__title {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+@media (min-width: 500px) {
+    .select-el__title {
+        width: 18%;
+    }
+
+    .input-el__first-name,
+    .input-el__last-name {
+        width: 38%;
+    }
+}

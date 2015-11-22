@@ -1,33 +1,50 @@
 window.JJ = window.JJ || {};
 
-var app = document.getElementById('app');
+var signInForm = document.getElementById('sign-in-form');
 
 // blah blah define DataStore and pass it, and the propPath, into each input el
 
 var dataStore = new JJ.DataStore();
 
-var firstNameEl1 = new JJ.InputEl({
+var titleSelect = new JJ.SelectEl({
+    dataStore: dataStore,
+    propName: 'title',
+    className: 'select-el__title',
+    label: 'Title',
+    options: ['Mr', 'Mrs', 'Ms'],
+});
+
+var firstNameInput = new JJ.InputEl({
     dataStore: dataStore,
     propName: 'firstName',
-    className: 'text class',
+    className: 'input-el__first-name',
     label: 'First name',
 });
 
-var lastNameEl1 = new JJ.InputEl({
+var lastNameInput = new JJ.InputEl({
     dataStore: dataStore,
     propName: 'lastName',
-    className: 'test-class-2',
+    className: 'input-el__last-name',
     label: 'Last name',
 });
 
+var addLine1El = new JJ.InputEl({
+    dataStore: dataStore,
+    propName: 'addLine1',
+    className: 'input-el__add-1',
+    label: 'Address',
+});
 
-var firstNameEl2 = new JJ.InputEl({
+var firstNameInput2 = new JJ.InputEl({
     dataStore: dataStore,
     propName: 'firstName',
-    className: 'test-class-2',
-    label: 'Last name',
+    className: 'input-el__first-name',
+    label: 'First name',
 });
 
-app.appendChild(firstNameEl1.el);
-app.appendChild(lastNameEl1.el);
-app.appendChild(firstNameEl2.el);
+signInForm.appendChild(titleSelect.el);
+signInForm.appendChild(firstNameInput.el);
+signInForm.appendChild(lastNameInput.el);
+signInForm.appendChild(addLine1El.el);
+signInForm.appendChild(firstNameInput2.el);
+
