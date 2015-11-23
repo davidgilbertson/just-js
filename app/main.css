@@ -32,23 +32,33 @@ body {
 }
 
 .input-el__first-name,
-.input-el__last-name {
-    width: 98%;
-    margin-left: 1%;
-    margin-right: 1%;
-}
-
+.input-el__last-name,
+.input-el__email,
 .input-el__add-1,
-.input-el__add-1 {
-    width: 98%;
-    margin-left: 1%;
-    margin-right: 1%;
-}
-
+.input-el__add-1,
 .select-el__title {
     width: 98%;
     margin-left: 1%;
     margin-right: 1%;
+}
+
+.button {
+    width: 98%;
+    margin: 50px 1% 0 1%;
+    padding: 10px;
+    border: 0;
+    background: steelblue;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.invalid-fields-wrapper {
+    border-top: 3px solid firebrick;
+    margin-top: 50px;
+    padding-top: 20px;
 }
 
 @media (min-width: 500px) {

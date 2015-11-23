@@ -1,50 +1,87 @@
 window.JJ = window.JJ || {};
 
-var signInForm = document.getElementById('sign-in-form');
-
-// blah blah define DataStore and pass it, and the propPath, into each input el
-
+var signInFormEl = document.getElementById('sign-in-form-fields');
+var invalidFields = document.getElementById('invalid-fields');
+var inputButtonEl = document.getElementById('submit-button');
 var dataStore = new JJ.DataStore();
+var formObjects = [];
+var i;
 
-var titleSelect = new JJ.SelectEl({
-    dataStore: dataStore,
-    propName: 'title',
-    className: 'select-el__title',
-    label: 'Title',
-    options: ['Mr', 'Mrs', 'Ms'],
+formObjects.push(
+    new JJ.SelectEl({
+        dataStore: dataStore,
+        propName: 'title',
+        className: 'select-el__title',
+        label: 'Title',
+        options: ['Mr', 'Mrs', 'Ms'],
+        validator: JJ.validators.isNotBlank,
+    })
+);
+
+formObjects.push(
+    new JJ.InputEl({
+        dataStore: dataStore,
+        propName: 'firstName',
+        className: 'input-el__first-name',
+        label: 'First name',
+        validator: JJ.validators.isNotBlank,
+    })
+);
+
+formObjects.push(
+    new JJ.InputEl({
+        dataStore: dataStore,
+        propName: 'lastName',
+        className: 'input-el__last-name',
+        label: 'Last name',
+        validator: JJ.validators.isNotBlank,
+    })
+);
+
+formObjects.push(
+    new JJ.InputEl({
+        dataStore: dataStore,
+        propName: 'email',
+        className: 'input-el__email',
+        label: 'Email',
+        validator: JJ.validators.isEmail,
+    })
+);
+
+formObjects.push(
+    new JJ.InputEl({
+        dataStore: dataStore,
+        propName: 'addLine1',
+        className: 'input-el__add-1',
+        label: 'Address',
+        validator: JJ.validators.isNotBlank,
+    })
+);
+
+formObjects.push(
+    new JJ.InputEl({
+        dataStore: dataStore,
+        propName: 'firstName',
+        className: 'input-el__first-name',
+        label: 'First name',
+        validator: JJ.validators.isNotBlank,
+    })
+);
+
+for (i = 0; i < formObjects.length; i++) {
+    signInFormEl.appendChild(formObjects[i].el);
+}
+
+inputButtonEl.addEventListener('click', function(e) {
+    e.preventDefault();
+    var i;
+
+    for (i = 0; i < formObjects.length; i++) {
+        var formObject = formObjects[i];
+        var isValid = formObject.isValid();
+        if (!isValid) {
+            invalidFields.appendChild(formObject.el);
+            console.log(formObject.label + ' is not valid');
+        }
+    }
 });
-
-var firstNameInput = new JJ.InputEl({
-    dataStore: dataStore,
-    propName: 'firstName',
-    className: 'input-el__first-name',
-    label: 'First name',
-});
-
-var lastNameInput = new JJ.InputEl({
-    dataStore: dataStore,
-    propName: 'lastName',
-    className: 'input-el__last-name',
-    label: 'Last name',
-});
-
-var addLine1El = new JJ.InputEl({
-    dataStore: dataStore,
-    propName: 'addLine1',
-    className: 'input-el__add-1',
-    label: 'Address',
-});
-
-var firstNameInput2 = new JJ.InputEl({
-    dataStore: dataStore,
-    propName: 'firstName',
-    className: 'input-el__first-name',
-    label: 'First name',
-});
-
-signInForm.appendChild(titleSelect.el);
-signInForm.appendChild(firstNameInput.el);
-signInForm.appendChild(lastNameInput.el);
-signInForm.appendChild(addLine1El.el);
-signInForm.appendChild(firstNameInput2.el);
-

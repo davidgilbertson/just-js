@@ -8,11 +8,15 @@
 <body>
     <div id="app">
         <form id="sign-in-form" class="sign-in-form">
+            <div id="sign-in-form-fields"></div>
+            <div id="invalid-fields" class="invalid-fields-wrapper"></div>
+            <input id="submit-button" type="submit" class="button" value="submit">
         </form>
     </div>
 
     <script src="app/polyfills.js"></script>
     <script src="app/utils.js"></script>
+    <script src="app/validators.js"></script>
     <script src="app/DataStore.js"></script>
     <script src="app/Element.js"></script>
     <script src="app/SelectEl.js"></script>
