@@ -6,7 +6,7 @@ JJ.validators = {
     },
 
     isEmail: function(value) {
-        return !!value.match(/.@./);
+        return !!value && !!value.match(/.@./);
     },
 
     isNumber: function(value) {

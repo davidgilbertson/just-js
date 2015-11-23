@@ -8,7 +8,8 @@ var formObjects = [];
 var i;
 
 formObjects.push(
-    new JJ.SelectEl({
+    new JJ.Element({
+        inputType: 'select',
         dataStore: dataStore,
         propName: 'title',
         className: 'select-el__title',
@@ -19,7 +20,8 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.InputEl({
+    new JJ.Element({
+        inputType: 'input',
         dataStore: dataStore,
         propName: 'firstName',
         className: 'input-el__first-name',
@@ -29,7 +31,8 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.InputEl({
+    new JJ.Element({
+        inputType: 'input',
         dataStore: dataStore,
         propName: 'lastName',
         className: 'input-el__last-name',
@@ -39,7 +42,8 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.InputEl({
+    new JJ.Element({
+        inputType: 'input',
         dataStore: dataStore,
         propName: 'email',
         className: 'input-el__email',
@@ -49,22 +53,13 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.InputEl({
+    new JJ.Element({
+        inputType: 'input',
         dataStore: dataStore,
         propName: 'addLine1',
         className: 'input-el__add-1',
         label: 'Address',
-        validator: JJ.validators.isNotBlank,
-    })
-);
-
-formObjects.push(
-    new JJ.InputEl({
-        dataStore: dataStore,
-        propName: 'firstName',
-        className: 'input-el__first-name',
-        label: 'First name',
-        validator: JJ.validators.isNotBlank,
+        validator: function() { return true; },
     })
 );
 
@@ -76,12 +71,18 @@ inputButtonEl.addEventListener('click', function(e) {
     e.preventDefault();
     var i;
 
+    while (invalidFields.lastChild) {
+        invalidFields.removeChild(invalidFields.lastChild);
+    }
+
     for (i = 0; i < formObjects.length; i++) {
         var formObject = formObjects[i];
-        var isValid = formObject.isValid();
+        var isValid = formObject.isValid;
+
         if (!isValid) {
-            invalidFields.appendChild(formObject.el);
-            console.log(formObject.label + ' is not valid');
+            // kinda clone the element by re-using the original set of props to create another one
+            var newEl = new JJ.Element(formObject.opts);
+            invalidFields.appendChild(newEl.el);
         }
     }
 });

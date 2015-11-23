@@ -61,6 +61,11 @@ body {
     padding-top: 20px;
 }
 
+.invalid-fields-wrapper input,
+.invalid-fields-wrapper select {
+    border: 1px solid firebrick;
+}
+
 @media (min-width: 500px) {
     .select-el__title {
         width: 18%;
