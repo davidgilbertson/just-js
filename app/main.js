@@ -8,19 +8,19 @@ var formObjects = [];
 var i;
 
 formObjects.push(
-    new JJ.Element({
+    new JJ.UserInput({
         inputType: 'select',
         dataStore: dataStore,
         propName: 'title',
         className: 'select-el__title',
         label: 'Title',
-        options: ['Mr', 'Mrs', 'Ms'],
+        options: ['', 'Mr', 'Mrs', 'Ms'],
         validator: JJ.validators.isNotBlank,
     })
 );
 
 formObjects.push(
-    new JJ.Element({
+    new JJ.UserInput({
         inputType: 'input',
         dataStore: dataStore,
         propName: 'firstName',
@@ -31,7 +31,7 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.Element({
+    new JJ.UserInput({
         inputType: 'input',
         dataStore: dataStore,
         propName: 'lastName',
@@ -42,7 +42,7 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.Element({
+    new JJ.UserInput({
         inputType: 'input',
         dataStore: dataStore,
         propName: 'email',
@@ -53,7 +53,7 @@ formObjects.push(
 );
 
 formObjects.push(
-    new JJ.Element({
+    new JJ.UserInput({
         inputType: 'input',
         dataStore: dataStore,
         propName: 'addLine1',
@@ -81,8 +81,10 @@ inputButtonEl.addEventListener('click', function(e) {
 
         if (!isValid) {
             // kinda clone the element by re-using the original set of props to create another one
-            var newEl = new JJ.Element(formObject.opts);
+            var newEl = new JJ.UserInput(formObject.opts);
             invalidFields.appendChild(newEl.el);
         }
     }
+
+    JJ.utils.addClass(document.body, 'highlight-invalids');
 });

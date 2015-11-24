@@ -61,8 +61,8 @@ body {
     padding-top: 20px;
 }
 
-.invalid-fields-wrapper input,
-.invalid-fields-wrapper select {
+body.highlight-invalids .is-invalid input,
+body.highlight-invalids .is-invalid select {
     border: 1px solid firebrick;
 }
 
